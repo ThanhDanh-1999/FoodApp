@@ -13,7 +13,6 @@ import kotlin.math.log
 class LogInActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLogInBinding
-    private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +24,6 @@ class LogInActivity : AppCompatActivity() {
 
         val intent = intent
         val loginAccount : UserAccount = intent.getSerializableExtra("SignedUpAccount") as UserAccount
-        Log.d("account info",loginAccount.email + " - " + loginAccount.password)
         binding.apply {
             LoginButton.setOnClickListener{
                 if(LoginEmailEntered.text.toString() != loginAccount.email)

@@ -21,10 +21,6 @@ class SignUpActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
         binding.apply {
             SignUpButton.setOnClickListener{
-                account?.name = SignupFullnameEntered.text.toString().trim()
-                account?.email = SignupEmailEntered.text.toString().trim()
-                account?.password = SignupPasswordEntered.text.toString().trim()
-                //viewModel.account = account
 
                 Toast.makeText(this@SignUpActivity,"Sign up successfully!\n",Toast.LENGTH_LONG).show()
                 val intent = Intent(this@SignUpActivity,LogInActivity::class.java)
