@@ -11,25 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F8F8F8"
-        tools:context=".LogInActivity">
-
-        <Button
-            android:id="@+id/back_from_login"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/border_selected"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:text="&lt;"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:backgroundTint="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".SignUpActivity">
 
         <ImageView
             android:id="@+id/imageView"
@@ -48,20 +30,20 @@
             android:layout_height="0dp"
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="70dp"
             android:layout_marginEnd="27dp"
             android:layout_marginRight="27dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sofia_pro"
-                android:text="Login"
+                android:text="Sign Up"
                 android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold" />
@@ -72,17 +54,16 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/full_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="5dp"
-                    android:text="E-mail"
+                    android:text="Full name"
                     android:textColor="#9796A1"
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/LoginEmailEntered"
+                    android:id="@+id/SignupFullnameEntered"
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:background="@drawable/switch_border"
@@ -95,7 +76,28 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="E-mail"
+                    android:textColor="#9796A1"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/SignupEmailEntered"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:background="@drawable/switch_border"
+                    android:ems="10"
+                    android:fontFamily="@font/sofia_pro"
+                    android:hint="Your email or phone"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -105,7 +107,7 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/LoginPasswordEntered"
+                    android:id="@+id/SignupPasswordEntered"
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:background="@drawable/switch_border"
@@ -119,25 +121,15 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/sofia_pro_medium"
-                android:gravity="center"
-                android:text="Forgot password?"
-                android:textColor="#FE724C" />
         </LinearLayout>
-
         <Button
-            android:id="@+id/LoginButton"
+            android:id="@+id/SignUpButton"
             android:layout_width="248dp"
             android:layout_height="60dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/stroke_button_shape"
             android:fontFamily="@font/sofia_pro_medium"
-            android:text="Login"
+            android:text="Sign up"
             android:textSize="15sp"
             app:backgroundTint="#FE724C"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +144,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LoginButton">
+            app:layout_constraintTop_toBottomOf="@+id/SignUpButton">
 
             <TextView
                 android:id="@+id/textView5"
@@ -172,9 +164,7 @@
                 android:text="Sign Up"
                 android:textColor="#FE724C" />
         </LinearLayout>
-
         <ImageView
-            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -189,7 +179,6 @@
             app:srcCompat="@drawable/signin_with_others" />
 
         <TextView
-            android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="168dp"
@@ -212,7 +201,6 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="57dp"
                 android:layout_margin="10dp"
@@ -225,7 +213,6 @@
                 app:backgroundTint="#FFFFFF" />
 
             <Button
-                android:id="@+id/button4"
                 android:layout_width="147dp"
                 android:layout_height="57dp"
                 android:layout_margin="10dp"
@@ -237,6 +224,5 @@
                 android:textColor="#000000"
                 app:backgroundTint="#FFFFFF" />
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
