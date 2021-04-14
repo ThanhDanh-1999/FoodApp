@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="inputAccount"
+            type="com.example.foodapp.UserAccount" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -163,7 +165,7 @@
                 android:text="Don't have an account?" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/GoToLogin_formSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -192,11 +194,10 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="168dp"
-            android:layout_marginLeft="168dp"
             android:layout_marginTop="10dp"
             android:text="Sign in with"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
             app:layout_constraintVertical_bias="0.045" />
@@ -226,7 +227,7 @@
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="147dp"
+                android:layout_width="163dp"
                 android:layout_height="57dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/stroke_button_shape"
