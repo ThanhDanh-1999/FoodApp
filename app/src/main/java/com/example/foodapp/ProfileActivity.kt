@@ -21,10 +21,6 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        edit_profile_button.setOnClickListener{
-            val buider = AlertDialog.Builder(this)
-        }
-
         edit_profile_button.setOnClickListener{changeInfo()}
         new_name.setOnClickListener{changeInfo()}
         new_number.setOnClickListener{changeInfo()}
