@@ -21,11 +21,9 @@ class SignUpActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
         binding.apply {
             SignUpButton.setOnClickListener{
-
-                Toast.makeText(this@SignUpActivity,"Sign up successfully!\n",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@SignUpActivity,"Sign up successfully!\n",Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@SignUpActivity,LogInActivity::class.java)
                 intent.putExtra("SignedUpAccount",account)
-
                 startActivity(intent)
             }
 

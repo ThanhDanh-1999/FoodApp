@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.example.foodapp.databinding.ActivityProfileBinding
 import kotlinx.android.synthetic.main.edit_profile_dialog.view.*
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_profile.*
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityProfileBinding
+    private var viewModel: ProfileViewModel = ProfileViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,16 +24,22 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         edit_profile_button.setOnClickListener{changeInfo()}
-        new_name.setOnClickListener{changeInfo()}
-        new_number.setOnClickListener{changeInfo()}
-        new_email.setOnClickListener{changeInfo()}
+        newname.setOnClickListener{changeInfo()}
+        newnumber.setOnClickListener{changeInfo()}
+        newemail.setOnClickListener{changeInfo()}
 
         var intent = intent
+        viewModel.account.value = intent.getSerializableExtra("account") as UserAccount
 
         binding.apply {
-            account = intent.getSerializableExtra("account") as UserAccount
+            account = viewModel.account.value
         }
-
+        viewModel.account.observe(this, Observer {
+            it.name.also { binding.Username.text }
+            binding.newname.text = it.email
+            binding.newemail.text = it.name
+            binding.newnumber.text = it.password
+        })
     }
 
     private fun changeInfo() {
@@ -47,15 +55,11 @@ class ProfileActivity : AppCompatActivity() {
             //dismiss dialog
             mAlertDialog.dismiss()
             //get text from EditTexts of custom layout
-            val name = mDialogView.dialogNameEt.text.toString()
-            val email = mDialogView.dialogEmailEt.text.toString()
-            val phoneNum = mDialogView.dialogPasswEt.text.toString()
+            binding.account?.name = mDialogView.dialogNameEt.text.toString()
+            binding.account?.email = mDialogView.dialogEmailEt.text.toString()
+            binding.account?.password = mDialogView.dialogPasswEt.text.toString()
 
             //set the input text in TextView
-            new_name.text = name
-            new_email.text = email
-            new_number.text = phoneNum
-            User_name.text = name
             mAlertDialog.dismiss()
         }
     }

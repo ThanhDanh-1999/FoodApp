@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.foodapp.databinding.ActivityLogInBinding
 import kotlinx.android.synthetic.main.activity_log_in.*
 import kotlin.math.log
@@ -13,11 +14,11 @@ import kotlin.math.log
 class LogInActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLogInBinding
-
+    private lateinit var viewModel: LoginViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_log_in)
-
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         back_from_login.setOnClickListener {
             finish()
         }
@@ -38,6 +39,7 @@ class LogInActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
+            binding.inputAccount = viewModel.account
         }
 
     }

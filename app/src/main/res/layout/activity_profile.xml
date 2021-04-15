@@ -102,7 +102,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/User_name"
+                android:id="@+id/Username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text= "@={account.name}"
@@ -125,12 +125,14 @@
                 android:text="Full name" />
 
             <TextView
-                android:id="@+id/new_name"
+                android:id="@+id/newname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:fontFamily="@font/sofia_pro"
                 android:shadowColor="#000000"
                 android:text="@={account.name}"
+                android:textColor="@color/black"
                 android:textSize="30sp" />
 
             <TextView
@@ -141,12 +143,14 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/new_email"
+                android:id="@+id/newemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:fontFamily="@font/sofia_pro"
                 android:text="@={account.email}"
-                android:textSize="30sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -156,12 +160,14 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/new_number"
+                android:id="@+id/newnumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:fontFamily="@font/sofia_pro"
                 android:text="@={account.password}"
-                android:textSize="30sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
