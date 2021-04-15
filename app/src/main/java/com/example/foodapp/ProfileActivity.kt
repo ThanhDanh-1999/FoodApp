@@ -2,6 +2,7 @@ package com.example.foodapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -26,6 +27,10 @@ class ProfileActivity : AppCompatActivity() {
 
         var intent = intent
         viewModel.account.value = intent.getSerializableExtra("account") as UserAccount
+        edit_profile_button.setOnClickListener{changeInfo()}
+        newname.setOnClickListener{changeInfo()}
+        newnumber.setOnClickListener{changeInfo()}
+        newemail.setOnClickListener{changeInfo()}
 
         binding.apply {
             edit_profile_button.setOnClickListener{changeInfo()}
@@ -34,10 +39,12 @@ class ProfileActivity : AppCompatActivity() {
             newemail.setOnClickListener{changeInfo()}
             account = viewModel.account.value
         }
+
         viewModel.account.observe(this, Observer {
+            Log.d("test",it.name)
             Username.text = it.name
-            newname.text = it.email
-            newemail.text = it.name
+            newname.text = it.name
+            newemail.text = it.email
             newnumber.text = it.password
         })
     }
@@ -51,9 +58,12 @@ class ProfileActivity : AppCompatActivity() {
         //login button click of custom layout
         mDialogView.change_confirm_button.setOnClickListener {
             //get text from EditTexts of custom layout
-            viewModel.account.value?.name = mDialogView.dialogNameEt.text.toString()
-            viewModel.account.value?.email = mDialogView.dialogEmailEt.text.toString()
-            viewModel.account.value?.password = mDialogView.dialogPasswEt.text.toString()
+            viewModel.account.value?.name = mDialogView.dialogNameEt.text.toString().trim()
+
+            viewModel.account.value?.email = mDialogView.dialogEmailEt.text.toString().trim()
+            viewModel.account.value?.password = mDialogView.dialogPasswEt.text.toString().trim()
+            viewModel.account.postValue(viewModel.account.value)
+            Log.d("test",mDialogView.dialogPasswEt.text.toString().trim())
 
             Toast.makeText(this@ProfileActivity,"Profile updated",Toast.LENGTH_SHORT).show()
 
