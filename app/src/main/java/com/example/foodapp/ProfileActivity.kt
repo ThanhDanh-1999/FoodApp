@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.foodapp.databinding.ActivityProfileBinding
 import kotlinx.android.synthetic.main.edit_profile_dialog.view.*
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -14,12 +15,12 @@ import kotlinx.android.synthetic.main.activity_profile.*
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityProfileBinding
-    private var viewModel: ProfileViewModel = ProfileViewModel()
+    private lateinit var viewModel : ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_profile)
-
+        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         back_from_profile.setOnClickListener{
             finish()
         }
@@ -34,12 +35,13 @@ class ProfileActivity : AppCompatActivity() {
             newemail.setOnClickListener{changeInfo()}
             account = viewModel.account.value
         }
-        viewModel.account.observe(this, Observer {
-            Username.text = it.name
-            newname.text = it.email
-            newemail.text = it.name
-            newnumber.text = it.password
-        })
+        val accObserver = Observer<UserAccount>{ newData ->
+            Username.text = newData.name
+            newname.text = newData.name
+            newemail.text = newData.email
+            newnumber.text = newData.password
+        }
+        viewModel.account.observe(this, accObserver)
     }
 
     private fun changeInfo() {
@@ -59,6 +61,7 @@ class ProfileActivity : AppCompatActivity() {
 
             //set the input text in TextView
             mAlertDialog.dismiss()
+            this@ProfileActivity.recreate()
         }
     }
 }
