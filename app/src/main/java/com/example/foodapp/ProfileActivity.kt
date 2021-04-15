@@ -60,8 +60,8 @@ class ProfileActivity : AppCompatActivity() {
             Toast.makeText(this@ProfileActivity,"Profile updated",Toast.LENGTH_SHORT).show()
 
             //set the input text in TextView
+            viewModel.account.postValue(viewModel.account.value)
             mAlertDialog.dismiss()
-            this@ProfileActivity.recreate()
         }
     }
 }
