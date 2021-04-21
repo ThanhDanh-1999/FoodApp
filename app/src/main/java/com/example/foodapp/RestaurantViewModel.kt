@@ -1,4 +1,6 @@
 package com.example.foodapp
 
-class RestaurantViewModel {
+import androidx.lifecycle.ViewModel
+
+class RestaurantViewModel : ViewModel() {
 }
