@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import java.io.InputStream
 import java.lang.Exception
 
@@ -28,12 +29,7 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
         var item = data[position]
         holder.name.text = item.name
         holder.address.text = item.address
-        try {
-            val link : InputStream = item.pictureLink.getContent() as InputStream
-            holder.picture.setImageDrawable(Drawable.createFromStream(link,"pic"))
-        }catch (e : Exception){
-            holder.picture.setImageDrawable(null)
-        }
+        Picasso.get().load(item.pictureLink).into(holder.picture)
 
 
     }
@@ -41,9 +37,9 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
     override fun getItemCount(): Int {
         return data.size
     }
-    class ViewHolder(val itemView : View) : RecyclerView.ViewHolder(itemView){
-        val name = itemView.findViewById<TextView>(R.id.restaurantName)
-        val address = itemView.findViewById<TextView>(R.id.restaurantAddress)
-        val picture = itemView.findViewById<ImageView>(R.id.restaurantPic)
+    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        val name = itemView.findViewById<TextView>(R.id.restaurantName)!!
+        val address = itemView.findViewById<TextView>(R.id.restaurantAddress)!!
+        val picture = itemView.findViewById<ImageView>(R.id.restaurantPic)!!
     }
 }

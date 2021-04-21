@@ -34,7 +34,7 @@ class LogInActivity : AppCompatActivity() {
                 else
                 {
                     val intent = Intent(this@LogInActivity,RestaurantsActivity::class.java)
-                    intent.putExtra("account",loginAccount)
+                    //intent.putExtra("account",loginAccount)
 
                     startActivity(intent)
                 }
