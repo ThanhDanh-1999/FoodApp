@@ -79,6 +79,7 @@
                     android:paddingLeft="20dp"
                     android:textSize="17sp"
                     android:textStyle="bold"
+                    android:paddingRight="10dp"
                     android:text="@={account.name}"/>
 
                 <TextView
@@ -100,6 +101,7 @@
                     android:hint="Your email or phone"
                     android:inputType="textPersonName"
                     android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:text="@={account.email}"/>
@@ -123,6 +125,7 @@
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:text="@={account.password}"/>
