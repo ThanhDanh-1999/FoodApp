@@ -14,8 +14,6 @@ class RestaurantsActivity : AppCompatActivity() {
     private lateinit var binding : ActivityRestaurantsBinding
     private lateinit var viewModel: RestaurantViewModel
 
-    private var mode : Int = 0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_restaurants)
@@ -26,14 +24,15 @@ class RestaurantsActivity : AppCompatActivity() {
         adapter.data = getRestaurants()
 
         switch_layout_btn.setOnClickListener {
-            if(mode == 0) {
+            adapter.switchItemView()
+            if(adapter.switchItemView()) {
                 retaurantList.layoutManager = GridLayoutManager(this, 2)
-                mode = 1
             }
             else {
                 retaurantList.layoutManager = LinearLayoutManager(this)
-                mode = 0
             }
+            adapter.switchItemView()
+            adapter.notifyDataSetChanged()
 
         }
     }
