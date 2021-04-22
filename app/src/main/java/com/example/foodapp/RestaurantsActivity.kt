@@ -4,12 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodapp.databinding.ActivityRestaurantsBinding
+import kotlinx.android.synthetic.main.activity_restaurants.*
 
 class RestaurantsActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityRestaurantsBinding
     private lateinit var viewModel: RestaurantViewModel
+
+    private var mode : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,5 +24,17 @@ class RestaurantsActivity : AppCompatActivity() {
         val adapter = RestaurantsAdapter()
         binding.retaurantList.adapter = adapter
         adapter.data = getRestaurants()
+
+        switch_layout_btn.setOnClickListener {
+            if(mode == 0) {
+                retaurantList.layoutManager = GridLayoutManager(this, 2)
+                mode = 1
+            }
+            else {
+                retaurantList.layoutManager = LinearLayoutManager(this)
+                mode = 0
+            }
+
+        }
     }
 }
