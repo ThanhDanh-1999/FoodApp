@@ -33,8 +33,8 @@ class LogInActivity : AppCompatActivity() {
                     Toast.makeText(this@LogInActivity,"Wrong password",Toast.LENGTH_SHORT).show()
                 else
                 {
-                    val intent = Intent(this@LogInActivity,ProfileActivity::class.java)
-                    intent.putExtra("account",loginAccount)
+                    val intent = Intent(this@LogInActivity,RestaurantsActivity::class.java)
+                    //intent.putExtra("account",loginAccount)
 
                     startActivity(intent)
                 }
