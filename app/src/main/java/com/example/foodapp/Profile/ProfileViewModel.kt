@@ -1,15 +1,8 @@
-package com.example.foodapp
+package com.example.foodapp.Profile
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
-class LoginViewModel : ViewModel() {
-    var account  = UserAccount("","", "")
-}
-
-class SignUpViewModel : ViewModel() {
-    var account  = UserAccount("","", "")
-}
+import com.example.foodapp.UserAccount
 
 class ProfileViewModel : ViewModel() {
     var account : MutableLiveData<UserAccount> = MutableLiveData()

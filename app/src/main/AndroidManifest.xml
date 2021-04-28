@@ -11,13 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApp">
-        <activity android:name=".RestaurantsActivity"></activity>
+        <activity android:name=".Restaurant.RestaurantsActivity"></activity>
         <activity android:name=".VerificationCodeActivity" />
         <activity android:name=".OnBoardingActivity" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".LogInActivity" />
-        <activity android:name=".SignUpActivity">
+        <activity android:name=".Profile.ProfileActivity" />
+        <activity android:name=".Login.LogInActivity" />
+        <activity android:name=".SignUp.SignUpActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

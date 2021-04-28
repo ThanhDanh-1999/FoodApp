@@ -1,4 +1,4 @@
-package com.example.foodapp
+package com.example.foodapp.Restaurant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.foodapp.R
 import com.example.foodapp.databinding.ActivityRestaurantsBinding
 import kotlinx.android.synthetic.main.activity_restaurants.*
 
@@ -16,7 +17,7 @@ class RestaurantsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_restaurants)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_restaurants)
         viewModel = ViewModelProvider(this).get(RestaurantViewModel::class.java)
 
         val adapter = RestaurantsAdapter()

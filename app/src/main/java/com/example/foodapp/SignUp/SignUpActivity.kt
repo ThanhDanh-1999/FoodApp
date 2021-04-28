@@ -1,4 +1,4 @@
-package com.example.foodapp
+package com.example.foodapp.SignUp
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.foodapp.Login.LogInActivity
+import com.example.foodapp.R
 import com.example.foodapp.databinding.ActivitySignUpBinding
 import kotlinx.android.synthetic.main.activity_sign_up.*
 

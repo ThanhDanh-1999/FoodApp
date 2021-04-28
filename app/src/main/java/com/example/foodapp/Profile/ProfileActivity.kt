@@ -1,4 +1,4 @@
-package com.example.foodapp
+package com.example.foodapp.Profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.foodapp.R
+import com.example.foodapp.UserAccount
 import com.example.foodapp.databinding.ActivityProfileBinding
 import kotlinx.android.synthetic.main.edit_profile_dialog.view.*
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -19,7 +21,7 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_profile)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         back_from_profile.setOnClickListener{
             finish()

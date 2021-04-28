@@ -1,15 +1,16 @@
-package com.example.foodapp
+package com.example.foodapp.Login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.foodapp.R
+import com.example.foodapp.Restaurant.RestaurantsActivity
+import com.example.foodapp.UserAccount
 import com.example.foodapp.databinding.ActivityLogInBinding
 import kotlinx.android.synthetic.main.activity_log_in.*
-import kotlin.math.log
 
 class LogInActivity : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class LogInActivity : AppCompatActivity() {
     private lateinit var viewModel: LoginViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_log_in)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_log_in)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         back_from_login.setOnClickListener {
             finish()
@@ -33,7 +34,7 @@ class LogInActivity : AppCompatActivity() {
                     Toast.makeText(this@LogInActivity,"Wrong password",Toast.LENGTH_SHORT).show()
                 else
                 {
-                    val intent = Intent(this@LogInActivity,RestaurantsActivity::class.java)
+                    val intent = Intent(this@LogInActivity, RestaurantsActivity::class.java)
                     //intent.putExtra("account",loginAccount)
 
                     startActivity(intent)

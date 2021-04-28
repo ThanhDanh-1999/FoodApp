@@ -1,6 +1,4 @@
-package com.example.foodapp
-
-import java.net.URL
+package com.example.foodapp.Restaurant
 
 fun getRestaurants() : List<Restaurant>
 {
