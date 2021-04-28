@@ -20,11 +20,11 @@ class RestaurantsActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_restaurants)
         viewModel = ViewModelProvider(this).get(RestaurantViewModel::class.java)
 
-        val adapter = RestaurantsAdapter()
+        /*val adapter = RestaurantsAdapter()
         binding.retaurantList.adapter = adapter
-        adapter.data = getRestaurants()
+        adapter.data = getRestaurants()*/
 
-        switch_layout_btn.setOnClickListener {
+        /*switch_layout_btn.setOnClickListener {
             adapter.switchItemView()
             if(adapter.switchItemView()) {
                 retaurantList.layoutManager = GridLayoutManager(this, 2)
@@ -35,6 +35,6 @@ class RestaurantsActivity : AppCompatActivity() {
             adapter.switchItemView()
             adapter.notifyDataSetChanged()
 
-        }
+        }*/
     }
 }

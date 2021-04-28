@@ -12,17 +12,15 @@
         android:layout_height="match_parent"
         tools:context=".Restaurant.RestaurantsActivity">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/retaurantList"
-            android:layout_width="0dp"
-            android:layout_height="597dp"
-            android:layout_marginTop="16dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        <fragment
+            android:id="@+id/listRestaurant_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.example.foodapp.Restaurant.RestaurantListFragment"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch_layout_btn"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/switch_layout_btn">
+        </fragment>
 
         <Button
             android:id="@+id/switch_layout_btn"
