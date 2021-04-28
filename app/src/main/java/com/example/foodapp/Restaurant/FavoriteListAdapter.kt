@@ -1,31 +1,16 @@
 package com.example.foodapp.Restaurant
 
-import android.content.Context
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
-import android.graphics.drawable.ColorDrawable
-import android.os.Build
-import android.text.style.BackgroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.R
 import com.squareup.picasso.Picasso
 
-class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>(){
-
-    var data : List<Restaurant> = listOf()
-        set(value){
-            field = value
-            notifyDataSetChanged()
-        }
+class FavoriteListAdapter(val data : List<Restaurant>) : RecyclerView.Adapter<FavoriteListAdapter.ViewHolder>() {
 
     val LIST_ITEM : Int = 0
     val GRID_ITEM : Int = 1
@@ -41,13 +26,6 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var item = data[position]
-        holder.name.text = item.name
-        holder.address.text = item.address
-        Picasso.get().load(item.pictureLink).into(holder.picture)
-        //holder.isFav.setOnCheckedChangeListener { buttonView, isChecked ->}
-    }
 
     override fun getItemCount(): Int {
         return data.size
@@ -71,6 +49,14 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
         val name = itemView.findViewById<TextView>(R.id.restaurantName)!!
         val address = itemView.findViewById<TextView>(R.id.restaurantAddress)!!
         val picture = itemView.findViewById<ImageView>(R.id.restaurantPic)!!
-        val isFav = itemView.findViewById<CheckBox>(R.id.Favorite_btn)!!
+        val isFav = itemView.findViewById<CheckBox>(R.id.Favorite_btn)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        var item = data[position]
+        holder.name.text = item.name
+        holder.address.text = item.address
+        Picasso.get().load(item.pictureLink).into(holder.picture)
+        holder.isFav.visibility = View.GONE
     }
 }

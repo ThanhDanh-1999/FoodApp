@@ -12,15 +12,14 @@
         android:layout_height="match_parent"
         tools:context=".Restaurant.RestaurantsActivity">
 
-        <fragment
+        <FrameLayout
             android:id="@+id/listRestaurant_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="com.example.foodapp.Restaurant.RestaurantListFragmentTop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switch_layout_btn">
-        </fragment>
+        </FrameLayout>
 
         <Button
             android:id="@+id/switch_layout_btn"
@@ -39,7 +38,6 @@
             android:layout_height="wrap_content"
             android:background="#FE724C"
             app:backgroundTint="#FE724C"
-            app:itemRippleColor="#FFFFFF"
             app:itemTextColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
