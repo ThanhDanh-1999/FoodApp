@@ -46,6 +46,9 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
         holder.name.text = item.name
         holder.address.text = item.address
         Picasso.get().load(item.pictureLink).into(holder.picture)
+
+        if(favoriteList.contains(data[position])) holder.isFav.isChecked = true
+
         holder.isFav.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked)
             {
