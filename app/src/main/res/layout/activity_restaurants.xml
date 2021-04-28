@@ -21,16 +21,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch_layout_btn" />
+            app:layout_constraintTop_toBottomOf="@+id/switch_layout_btn"
+            />
 
         <Button
             android:id="@+id/switch_layout_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Switch"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.968"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/restaurantBottomNavigationBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FE724C"
+            app:backgroundTint="#FE724C"
+            app:itemRippleColor="#FFFFFF"
+            app:itemTextColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_navigation_restaurant" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

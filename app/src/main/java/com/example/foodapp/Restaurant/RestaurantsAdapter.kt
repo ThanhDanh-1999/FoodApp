@@ -3,6 +3,7 @@ package com.example.foodapp.Restaurant
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -60,5 +61,6 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
         val name = itemView.findViewById<TextView>(R.id.restaurantName)!!
         val address = itemView.findViewById<TextView>(R.id.restaurantAddress)!!
         val picture = itemView.findViewById<ImageView>(R.id.restaurantPic)!!
+        val isFav = itemView.findViewById<CheckBox>(R.id.Favorite_btn)
     }
 }
