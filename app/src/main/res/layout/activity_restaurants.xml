@@ -16,7 +16,7 @@
             android:id="@+id/listRestaurant_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="com.example.foodapp.Restaurant.RestaurantListFragment"
+            android:name="com.example.foodapp.Restaurant.RestaurantListFragmentTop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switch_layout_btn">

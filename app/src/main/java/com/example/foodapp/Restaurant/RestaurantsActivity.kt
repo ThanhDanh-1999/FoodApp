@@ -2,6 +2,7 @@ package com.example.foodapp.Restaurant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,21 +21,21 @@ class RestaurantsActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_restaurants)
         viewModel = ViewModelProvider(this).get(RestaurantViewModel::class.java)
 
-        /*val adapter = RestaurantsAdapter()
-        binding.retaurantList.adapter = adapter
-        adapter.data = getRestaurants()*/
-
-        /*switch_layout_btn.setOnClickListener {
-            adapter.switchItemView()
-            if(adapter.switchItemView()) {
-                retaurantList.layoutManager = GridLayoutManager(this, 2)
+        restaurantBottomNavigationBar.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.Top_btn->{
+                    Toast.makeText(this,"switch to top",Toast.LENGTH_SHORT).show()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.Favorite_btn->{
+                    Toast.makeText(this,"switch to favorite",Toast.LENGTH_SHORT).show()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                else -> {
+                    return@setOnNavigationItemSelectedListener false
+                }
             }
-            else {
-                retaurantList.layoutManager = LinearLayoutManager(this)
-            }
-            adapter.switchItemView()
-            adapter.notifyDataSetChanged()
+        }
 
-        }*/
     }
 }
