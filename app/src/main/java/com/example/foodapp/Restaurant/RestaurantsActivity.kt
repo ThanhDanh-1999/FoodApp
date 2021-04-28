@@ -18,9 +18,6 @@ class RestaurantsActivity : AppCompatActivity() {
     private lateinit var binding : ActivityRestaurantsBinding
     private lateinit var viewModel: RestaurantViewModel
 
-    var favoriteList: List<Restaurant> = listOf()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_restaurants)
