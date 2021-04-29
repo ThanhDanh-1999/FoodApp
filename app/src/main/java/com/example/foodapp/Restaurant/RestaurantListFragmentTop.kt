@@ -28,7 +28,7 @@ class RestaurantListFragmentTop : Fragment(){
         adapter = RestaurantsAdapter()
         binding.retaurantList.adapter = adapter
         adapter.data = getRestaurants()
-
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -36,21 +36,20 @@ class RestaurantListFragmentTop : Fragment(){
         super.onViewCreated(view, savedInstanceState)
     }
 
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         super.onOptionsItemSelected(item)
         when (item.itemId) {
             R.id.displayMode -> {
+                adapter.switchItemView()
                 if (item.title == "List") {
                     item.icon = resources.getDrawable(R.drawable.ic_grid)
                     item.title = "Grid"
                     retaurantList.layoutManager = GridLayoutManager(activity,2)
-                    switchItemView()
                     return true
                 } else {
                     item.icon = resources.getDrawable(R.drawable.ic_list)
                     item.title = "List"
                     retaurantList.layoutManager = LinearLayoutManager(activity)
-                    switchItemView()
                     return true
                 }
                 adapter.notifyDataSetChanged()
@@ -58,5 +57,5 @@ class RestaurantListFragmentTop : Fragment(){
             }
             else -> return false
         }
-    }*/
+    }
 }

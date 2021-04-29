@@ -28,8 +28,7 @@ class RestaurantsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_restaurants)
         viewModel = ViewModelProvider(this).get(RestaurantViewModel::class.java)
-
-        //loadFragment(RestaurantListFragmentFavorite(favoriteList))
+        
         loadFragment(RestaurantListFragmentTop())
 
         restaurantBottomNavigationBar.setOnNavigationItemSelectedListener {
@@ -53,32 +52,6 @@ class RestaurantsActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.restaurant_activity_menubar,menu)
         return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        super.onOptionsItemSelected(item)
-        when (item.itemId) {
-
-            R.id.displayMode -> {
-                switchItemView()
-                if (item.title == "List") {
-                    item.icon = resources.getDrawable(R.drawable.ic_grid)
-                    item.title = "Grid"
-                    //FavRetaurantList.layoutManager = GridLayoutManager(applicationContext,2)
-                    retaurantList.layoutManager = GridLayoutManager(applicationContext,2)
-
-                    return true
-                } else {
-                    item.icon = resources.getDrawable(R.drawable.ic_list)
-                    item.title = "List"
-                    //FavRetaurantList.layoutManager = LinearLayoutManager(applicationContext)
-                    retaurantList.layoutManager = LinearLayoutManager(applicationContext)
-
-                    return true
-                }
-            }
-            else -> return false
-        }
     }
 
     private fun loadFragment(fragment : Fragment)

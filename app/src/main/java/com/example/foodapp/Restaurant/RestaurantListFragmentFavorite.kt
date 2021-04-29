@@ -23,9 +23,7 @@ class RestaurantListFragmentFavorite(val data : List<Restaurant>)  : Fragment(){
         binding = DataBindingUtil.inflate(inflater, R.layout.restaurantlist_fragment_layout_favorite,container,false)
         adapter = FavoriteListAdapter(data)
         binding.FavRetaurantList.adapter = adapter
-
-
-
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -33,26 +31,27 @@ class RestaurantListFragmentFavorite(val data : List<Restaurant>)  : Fragment(){
         super.onViewCreated(view, savedInstanceState)
     }
 
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         super.onOptionsItemSelected(item)
         when (item.itemId) {
             R.id.displayMode -> {
+                adapter.switchItemView()
                 if (item.title == "List") {
                     item.icon = resources.getDrawable(R.drawable.ic_grid)
                     item.title = "Grid"
+
                     FavRetaurantList.layoutManager = GridLayoutManager(activity,2)
-                    switchItemView()
+
                     return true
                 } else {
                     item.icon = resources.getDrawable(R.drawable.ic_list)
                     item.title = "List"
                     FavRetaurantList.layoutManager = LinearLayoutManager(activity)
-                    switchItemView()
                     return true
                 }
                 adapter.notifyDataSetChanged()
             }
             else -> return false
         }
-    }*/
+    }
 }

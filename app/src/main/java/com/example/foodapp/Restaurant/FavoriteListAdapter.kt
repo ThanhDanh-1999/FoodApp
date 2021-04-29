@@ -12,6 +12,10 @@ import com.squareup.picasso.Picasso
 
 class FavoriteListAdapter(val data : List<Restaurant>) : RecyclerView.Adapter<FavoriteListAdapter.ViewHolder>() {
 
+    val LIST_ITEM : Int = 0
+    val GRID_ITEM : Int = 1
+    var isSwitch : Boolean = false
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var layoutInflater = LayoutInflater.from(parent.context)
         var view : View
@@ -25,6 +29,12 @@ class FavoriteListAdapter(val data : List<Restaurant>) : RecyclerView.Adapter<Fa
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    fun switchItemView() : Boolean
+    {
+        isSwitch = !isSwitch
+        return isSwitch
     }
 
     override fun getItemViewType(position: Int): Int {

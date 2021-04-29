@@ -21,6 +21,10 @@ import com.squareup.picasso.Picasso
 
 class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>(){
 
+    val LIST_ITEM : Int = 0
+    val GRID_ITEM : Int = 1
+    var isSwitch : Boolean = false
+
     var data : List<Restaurant> = listOf()
         set(value){
             field = value
@@ -62,6 +66,12 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    fun switchItemView() : Boolean
+    {
+        isSwitch = !isSwitch
+        return isSwitch
     }
 
     override fun getItemViewType(position: Int): Int {
