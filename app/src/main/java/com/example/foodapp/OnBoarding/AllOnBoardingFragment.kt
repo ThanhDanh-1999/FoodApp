@@ -10,7 +10,7 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.foodapp.R
-import com.example.foodapp.WelcomeFragment
+import com.example.foodapp.Welcome.WelcomeFragment
 
 class AllOnBoardingFragment : Fragment() {
     override fun onCreateView(

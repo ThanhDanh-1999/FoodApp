@@ -1,4 +1,4 @@
-package com.example.foodapp
+package com.example.foodapp.Welcome
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,8 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.example.foodapp.R
+import com.example.foodapp.SignUp.SignUpFragment
 
 class WelcomeFragment : Fragment() {
     override fun onCreateView(

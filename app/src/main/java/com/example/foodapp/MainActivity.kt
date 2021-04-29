@@ -16,6 +16,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-interface OnBackPressed {
-    fun onBackPressed()
-}

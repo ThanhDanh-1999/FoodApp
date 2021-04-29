@@ -1,4 +1,4 @@
-package com.example.foodapp
+package com.example.foodapp.SignUp
 
 import android.os.Bundle
 import android.text.Editable
@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
+import com.example.foodapp.Login.LoginFragment
+import com.example.foodapp.R
 import com.example.foodapp.databinding.SignUpFragmentBinding
 
 
@@ -29,10 +31,6 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
-        //val signUpButton = view.findViewById<Button>(R.id.SignUpButton)
-        //val signUpEmailEntered = view.findViewById<Button>(R.id.SignupEmailEntered)
-        //val signUpPasswordEntered = view.findViewById<Button>(R.id.SignupPasswordEntered)
-        //val goToLoginFormSignUp = view.findViewById<Button>(R.id.GoToLogin_formSignUp)
         binding.apply {
             SignUpButton.setOnClickListener{
                 var passwordFlag = false

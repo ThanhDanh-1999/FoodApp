@@ -1,15 +1,23 @@
-package com.example.foodapp
+package com.example.foodapp.Restaurant
 
-import android.graphics.drawable.Drawable
+import android.content.Context
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
+import android.text.style.BackgroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foodapp.R
 import com.squareup.picasso.Picasso
-import java.io.InputStream
-import java.lang.Exception
 
 class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>(){
 
@@ -19,9 +27,7 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
             notifyDataSetChanged()
         }
 
-    val LIST_ITEM : Int = 0
-    val GRID_ITEM : Int = 1
-    var isSwitch : Boolean = true
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var layoutInflater = LayoutInflater.from(parent.context)
@@ -38,6 +44,20 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
         holder.name.text = item.name
         holder.address.text = item.address
         Picasso.get().load(item.pictureLink).into(holder.picture)
+
+        if(favoriteList.contains(data[position])) holder.isFav.isChecked = true
+
+        holder.isFav.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked)
+            {
+                if(!favoriteList.contains(data[position]))
+                favoriteList += data[position]
+            }
+            else
+            {
+                favoriteList -= data[position]
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -52,15 +72,10 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>()
         }
     }
 
-    fun switchItemView() : Boolean
-    {
-        isSwitch = !isSwitch
-        return isSwitch
-    }
-
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         val name = itemView.findViewById<TextView>(R.id.restaurantName)!!
         val address = itemView.findViewById<TextView>(R.id.restaurantAddress)!!
         val picture = itemView.findViewById<ImageView>(R.id.restaurantPic)!!
+        val isFav = itemView.findViewById<CheckBox>(R.id.favorite_btn)!!
     }
 }
