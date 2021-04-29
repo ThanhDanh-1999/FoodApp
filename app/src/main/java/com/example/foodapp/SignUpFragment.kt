@@ -1,27 +1,38 @@
 package com.example.foodapp
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
-import com.example.foodapp.databinding.ActivitySignUpBinding
-import kotlinx.android.synthetic.main.activity_sign_up.*
+import com.example.foodapp.databinding.SignUpFragmentBinding
 
 
-class SignUpActivity : AppCompatActivity() {
-
-    private lateinit var binding : ActivitySignUpBinding
+class SignUpFragment : Fragment() {
+    private lateinit var binding : SignUpFragmentBinding
     private lateinit var viewModel : SignUpViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = SignUpFragmentBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+        //val signUpButton = view.findViewById<Button>(R.id.SignUpButton)
+        //val signUpEmailEntered = view.findViewById<Button>(R.id.SignupEmailEntered)
+        //val signUpPasswordEntered = view.findViewById<Button>(R.id.SignupPasswordEntered)
+        //val goToLoginFormSignUp = view.findViewById<Button>(R.id.GoToLogin_formSignUp)
         binding.apply {
             SignUpButton.setOnClickListener{
                 var passwordFlag = false
@@ -42,16 +53,28 @@ class SignUpActivity : AppCompatActivity() {
                     SignupPasswordEntered.error = "Your passwords must have Capital letters, Lowercase letters, Number and Special characters !"
                 } else passwordFlag=true
                 if (emailFlag&&passwordFlag){
-                    Toast.makeText(this@SignUpActivity, "Sign up successfully!\n", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@SignUpActivity, LogInActivity::class.java)
-                    intent.putExtra("SignedUpAccount", account)
-                    startActivity(intent)
+                    Toast.makeText(activity, "Sign up successfully!\n", Toast.LENGTH_SHORT).show()
+                    parentFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        val args = Bundle()
+                        args.putSerializable("SignedUpAccount", account)
+                        val fragment = LoginFragment()
+                        fragment.arguments = args
+                        add(R.id.frag, fragment)
+                        addToBackStack(null)
+                    }
                 } else if (!emailFlag&&!passwordFlag)
-                    Toast.makeText(this@SignUpActivity, "Your email is invalid !" +
-                            "\nYour password is invalid !", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        activity, "Your email is invalid !" +
+                                "\nYour password is invalid !", Toast.LENGTH_SHORT
+                    ).show()
                 else if (!emailFlag&&passwordFlag)
-                    Toast.makeText(this@SignUpActivity, "Your email is invalid !", Toast.LENGTH_SHORT).show()
-                else Toast.makeText(this@SignUpActivity, "Your password is invalid !", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "Your email is invalid !", Toast.LENGTH_SHORT).show()
+                else Toast.makeText(
+                    activity,
+                    "Your password is invalid !",
+                    Toast.LENGTH_SHORT
+                ).show()
 
             }
             SignupEmailEntered.addTextChangedListener(object : TextWatcher {
@@ -63,7 +86,14 @@ class SignUpActivity : AppCompatActivity() {
                         SignupEmailEntered.error = "Your email is invalid !";
                 }
 
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+                override fun beforeTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
                 override fun afterTextChanged(s: Editable) {}
             })
             SignupPasswordEntered.addTextChangedListener(object : TextWatcher {
@@ -72,28 +102,43 @@ class SignUpActivity : AppCompatActivity() {
                     if (text.isEmpty())
                         SignupPasswordEntered.error = "Your passwords must match !"
                     else if (text.length < 8) {
-                        SignupPasswordEntered.error = "Your passwords must be at least 8 characters in length !"
+                        SignupPasswordEntered.error =
+                            "Your passwords must be at least 8 characters in length !"
                     } else {
                         if (!checkString(text)) {
-                            SignupPasswordEntered.error = "Your passwords must have Capital letters, Lowercase letters, Number and Special characters !"
+                            SignupPasswordEntered.error =
+                                "Your passwords must have Capital letters, Lowercase letters, Number and Special characters !"
                         }
                     }
 
                 }
 
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+                override fun beforeTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
                 override fun afterTextChanged(s: Editable) {}
             })
             GoToLoginFormSignUp.setOnClickListener{
-                val intent = Intent(this@SignUpActivity, LogInActivity::class.java)
-                intent.putExtra("SignedUpAccount", account)
-
-                startActivity(intent)
+                parentFragmentManager.commit {
+                    setReorderingAllowed(true)
+                    val args = Bundle()
+                    args.putSerializable("SignedUpAccount", account)
+                    val fragment = LoginFragment()
+                    fragment.arguments = args
+                    add(R.id.frag, fragment)
+                    addToBackStack(null)
+                }
             }
             binding.account = viewModel.account
         }
-    }
 
+
+    }
     fun isEmailValid(email: CharSequence?): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }

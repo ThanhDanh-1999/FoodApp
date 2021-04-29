@@ -81,7 +81,6 @@
                     android:textStyle="bold"
                     android:paddingRight="10dp"
                     android:text="@={account.name}"/>
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
