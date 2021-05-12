@@ -4,7 +4,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RestClient {
-
     private var api : MovieDBService
 
     val API : MovieDBService
@@ -14,19 +13,22 @@ class RestClient {
         api = createMovieDBService()
     }
 
-    companion object{
-        private var mInstance : RestClient? = null
+    companion object {
+        private var mInstance: RestClient? = null
 
         fun getInstance() = mInstance ?: synchronized(this){
-            mInstance?: RestClient().also { mInstance = it }
+            mInstance ?: RestClient().also { mInstance = it }
         }
     }
 
     private fun createMovieDBService() : MovieDBService{
-        val retrofit : Retrofit = Retrofit.Builder()
+
+        //create retrofit
+        val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
         return retrofit.create(MovieDBService::class.java)
     }
 }

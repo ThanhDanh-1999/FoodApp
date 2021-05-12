@@ -1,10 +1,16 @@
 package com.example.foodapp.Movie
 
+import com.google.gson.annotations.SerializedName
+
 data class MovieResp (
         val page: Long? = null,
         val results: List<Movie>? = null,
         val dates: Dates? = null,
+
+        @SerializedName("total_pages")
         val totalPages: Long? = null,
+
+        @SerializedName("total_results")
         val totalResults: Long? = null
 )
 
