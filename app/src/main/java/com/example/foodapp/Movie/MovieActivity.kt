@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_restaurants.*
 
 class MovieActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie)
@@ -42,7 +41,7 @@ class MovieActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         //reused
         menuInflater.inflate(R.menu.restaurant_activity_menubar,menu)
-        return super.onCreateOptionsMenu(menu)
+        return true
     }
 
     private fun loadFragment(fragment : Fragment)
