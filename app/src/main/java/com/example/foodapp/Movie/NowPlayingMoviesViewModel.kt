@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 class NowPlayingMoviesViewModel : ViewModel() {
 
-    fun getData(): MovieResp{
+    fun getData(): List<Movie>? {
         var movieResp = MovieResp()
         viewModelScope.launch {
             movieResp = RestClient.getInstance().API.listNowPlayingMovie(
@@ -17,6 +17,7 @@ class NowPlayingMoviesViewModel : ViewModel() {
                "7329758a578ec893b84930c8f1cc3919")
             Log.e("TAG", movieResp.results.toString())
         }
-        return movieResp
+        Log.e("TAG", movieResp.results?.get(0)?.title.toString())
+        return movieResp.results
     }
 }

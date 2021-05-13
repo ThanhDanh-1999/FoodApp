@@ -8,9 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.Movie.Movie
 import com.example.foodapp.R
-import com.example.foodapp.Restaurant.RestaurantsAdapter
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.movie_grid_item.view.*
 
 class NowPlayingFragmentAdapter(val data : List<Movie>?) : RecyclerView.Adapter<NowPlayingFragmentAdapter.ViewHolder>(){
 
@@ -19,19 +17,14 @@ class NowPlayingFragmentAdapter(val data : List<Movie>?) : RecyclerView.Adapter<
     private var isSwitch : Boolean = false
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val poster = itemView.findViewById<ImageView>(R.id.poster_img)
-        val title = itemView.findViewById<TextView>(R.id.title_txt)
-        val description = itemView.findViewById<TextView>(R.id.description_txt)
-    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var layoutInflater = LayoutInflater.from(parent.context)
-        var view : View
-        if(viewType == LIST_ITEM)
-            view = layoutInflater.inflate(R.layout.movie_linear_item, parent, false)
+        var view : View = if(viewType == LIST_ITEM)
+            layoutInflater.inflate(R.layout.movie_linear_item, parent, false)
         else
-            view = layoutInflater.inflate(R.layout.movie_grid_item, parent, false)
+            layoutInflater.inflate(R.layout.movie_grid_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -42,10 +35,10 @@ class NowPlayingFragmentAdapter(val data : List<Movie>?) : RecyclerView.Adapter<
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (isSwitch){
-            return LIST_ITEM;
+        return if (isSwitch){
+            LIST_ITEM
         }else{
-            return GRID_ITEM;
+            GRID_ITEM;
         }
     }
 
@@ -57,10 +50,14 @@ class NowPlayingFragmentAdapter(val data : List<Movie>?) : RecyclerView.Adapter<
     }
 
     override fun getItemCount(): Int {
-        if (data != null) {
-            return data.size
-        }
-        else return 0
+        return if (data != null) {
+            data.size
+        } else 0
     }
 
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val poster = itemView.findViewById<ImageView>(R.id.poster_img)
+        val title = itemView.findViewById<TextView>(R.id.title_txt)
+        val description = itemView.findViewById<TextView>(R.id.description_txt)
+    }
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,7 +25,7 @@ class NowPlayingFragment : Fragment(){
    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         viewModel = ViewModelProvider(this).get(NowPlayingMoviesViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.movie_fragment,container,false)
-        data = viewModel.getData().results as? List<Movie>
+        data = viewModel.getData()
         adapter = NowPlayingFragmentAdapter(data)
         if(adapter != null) binding.npMovieList.adapter = adapter
         setHasOptionsMenu(true)
