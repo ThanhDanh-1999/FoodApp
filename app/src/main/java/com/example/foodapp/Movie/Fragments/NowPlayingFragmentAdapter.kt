@@ -50,9 +50,7 @@ class NowPlayingFragmentAdapter(val data : List<Movie>?) : RecyclerView.Adapter<
     }
 
     override fun getItemCount(): Int {
-        return if (data != null) {
-            data.size
-        } else 0
+        return data?.size ?: 0
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
