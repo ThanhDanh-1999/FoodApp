@@ -12,7 +12,7 @@ import com.example.foodapp.Movie.Movie
 import com.example.foodapp.R
 import com.squareup.picasso.Picasso
 
-class NowPlayingFragmentAdapter(val context : Context) : RecyclerView.Adapter<NowPlayingFragmentAdapter.ViewHolder>(){
+class NowPlayingFragmentAdapter() : RecyclerView.Adapter<NowPlayingFragmentAdapter.ViewHolder>(){
 
     private val LIST_ITEM : Int = 0
     private val GRID_ITEM : Int = 1
@@ -22,8 +22,8 @@ class NowPlayingFragmentAdapter(val context : Context) : RecyclerView.Adapter<No
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var layoutInflater = LayoutInflater.from(context)
-        var view : View = if(viewType == LIST_ITEM)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view : View = if(viewType == GRID_ITEM)
             layoutInflater.inflate(R.layout.movie_linear_item, parent, false)
         else
             layoutInflater.inflate(R.layout.movie_grid_item, parent, false)
@@ -40,20 +40,21 @@ class NowPlayingFragmentAdapter(val context : Context) : RecyclerView.Adapter<No
         return if (isSwitch){
             LIST_ITEM
         }else{
-            GRID_ITEM;
+            GRID_ITEM
         }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var item = data[position]
+        val item = data[position]
         holder.title.text = item.title
         holder.description.text = item.overview
-        Picasso.get().load(item.posterPath).into(holder.poster)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + item.posterPath).into(holder.poster)
+        
         Log.d("AAA",item.toString())
     }
 
     override fun getItemCount(): Int {
-        return data?.size ?: 0
+        return data.size
     }
 
     fun setDataList(listData: List<Movie>){
@@ -63,8 +64,8 @@ class NowPlayingFragmentAdapter(val context : Context) : RecyclerView.Adapter<No
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val poster = itemView.findViewById<ImageView>(R.id.poster_img)
-        val title = itemView.findViewById<TextView>(R.id.title_txt)
-        val description = itemView.findViewById<TextView>(R.id.description_txt)
+        val poster: ImageView = itemView.findViewById(R.id.poster_img)
+        val title: TextView = itemView.findViewById(R.id.title_txt)
+        val description: TextView = itemView.findViewById(R.id.description_txt)
     }
 }

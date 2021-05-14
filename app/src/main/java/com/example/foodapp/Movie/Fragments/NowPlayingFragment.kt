@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodapp.Movie.Movie
 import com.example.foodapp.Movie.NowPlayingMoviesViewModel
 import com.example.foodapp.R
@@ -32,16 +33,24 @@ class NowPlayingFragment : Fragment() {
 
         viewModel.getData()
         viewModel.movieList.observe(viewLifecycleOwner, Observer {
-            Log.d("TAG", "${it.toString()}")
-            //adapter.setDataList(it)
+            Log.d("TAG", "${it[0].title}")
+            adapter.setDataList(it)
         })
 
-        adapter = NowPlayingFragmentAdapter(requireContext())
+        adapter = NowPlayingFragmentAdapter()
 
-        binding.npMovieList.adapter = adapter
-        adapter.setDataList(listOf(Movie("phim fake")))
+        binding.apply {
+            npMovieList.adapter = adapter
+
+        }
+
         setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.npMovieList.layoutManager = LinearLayoutManager(context)
     }
 
 }

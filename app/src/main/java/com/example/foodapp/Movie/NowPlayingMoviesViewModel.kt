@@ -12,9 +12,8 @@ class NowPlayingMoviesViewModel : ViewModel() {
     var movieList = MutableLiveData<List<Movie>>()
 
     fun getData() {
-        var movieResp = MovieResp()
         viewModelScope.launch {
-            movieResp = RestClient.getInstance().API.listNowPlayingMovie(
+            val  movieResp = RestClient.getInstance().API.listNowPlayingMovie(
                "en-US",
                1,
                "7329758a578ec893b84930c8f1cc3919")
