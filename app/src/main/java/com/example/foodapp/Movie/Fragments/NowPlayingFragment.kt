@@ -1,12 +1,16 @@
 package com.example.foodapp.Movie.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodapp.Movie.Movie
 import com.example.foodapp.Movie.NowPlayingMoviesViewModel
 import com.example.foodapp.R
@@ -14,21 +18,39 @@ import com.example.foodapp.Restaurant.FavoriteListAdapter
 import com.example.foodapp.SignUp.SignUpViewModel
 import com.example.foodapp.databinding.MovieFragmentBinding
 
-class NowPlayingFragment : Fragment(){
-    private lateinit var binding : MovieFragmentBinding
+class NowPlayingFragment : Fragment() {
+    private lateinit var binding: MovieFragmentBinding
     private lateinit var adapter: NowPlayingFragmentAdapter
-    private lateinit var viewModel : NowPlayingMoviesViewModel
+    private lateinit var viewModel: NowPlayingMoviesViewModel
 
-    private var data : List<Movie>? = null
-
-   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         viewModel = ViewModelProvider(this).get(NowPlayingMoviesViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater, R.layout.movie_fragment,container,false)
-        data = viewModel.getData().results as? List<Movie>
-        adapter = NowPlayingFragmentAdapter(data)
-        if(adapter != null) binding.npMovieList.adapter = adapter
+        binding = DataBindingUtil.inflate(inflater, R.layout.movie_fragment, container, false)
+
+        viewModel.getData()
+        viewModel.movieList.observe(viewLifecycleOwner, Observer {
+            Log.d("TAG", "${it[0].title}")
+            adapter.setDataList(it)
+        })
+
+        adapter = NowPlayingFragmentAdapter()
+
+        binding.apply {
+            npMovieList.adapter = adapter
+
+        }
+
         setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.npMovieList.layoutManager = LinearLayoutManager(context)
     }
 
 }

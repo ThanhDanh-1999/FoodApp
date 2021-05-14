@@ -24,7 +24,8 @@ data class Movie (
         @SerializedName("original_language")
         val originalLanguage: OriginalLanguage? = null,
 
-        val title: String? = null,
+        @SerializedName("title")
+        var title: String? = null,
 
         @SerializedName("backdrop_path")
         val backdropPath: String? = null,
@@ -38,7 +39,12 @@ data class Movie (
 
         @SerializedName("vote_average")
         val voteAverage: Double? = null
-)
+
+) {
+        constructor(name:String): this(){
+                title = name
+        }
+}
 
 enum class OriginalLanguage {
     En,
