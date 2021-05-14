@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class MovieResp (
         val page: Long? = null,
+        @SerializedName("results")
         val results: List<Movie>? = null,
         val dates: Dates? = null,
 
