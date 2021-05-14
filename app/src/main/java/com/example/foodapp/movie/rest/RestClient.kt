@@ -1,4 +1,4 @@
-package com.example.foodapp.movie.rest
+package com.example.foodapp.Movie.rest
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -25,9 +25,9 @@ class RestClient {
 
         //create retrofit
         val retrofit: Retrofit = Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+            .baseUrl("https://api.themoviedb.org/3/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
         return retrofit.create(MovieDBService::class.java)
     }

@@ -1,21 +1,17 @@
 package com.example.foodapp.Movie.Fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.foodapp.Movie.Movie
 import com.example.foodapp.Movie.NowPlayingMoviesViewModel
 import com.example.foodapp.R
-import com.example.foodapp.Restaurant.FavoriteListAdapter
-import com.example.foodapp.SignUp.SignUpViewModel
 import com.example.foodapp.databinding.MovieFragmentBinding
 
 class NowPlayingFragment : Fragment() {
@@ -27,13 +23,12 @@ class NowPlayingFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewModel = ViewModelProvider(this).get(NowPlayingMoviesViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.movie_fragment, container, false)
 
         viewModel.getData()
-        viewModel.movieList.observe(viewLifecycleOwner, Observer {
-            Log.d("TAG", "${it[0].title}")
+        viewModel.movieList.observe(viewLifecycleOwner, {
             adapter.setDataList(it)
         })
 
@@ -41,7 +36,6 @@ class NowPlayingFragment : Fragment() {
 
         binding.apply {
             npMovieList.adapter = adapter
-
         }
 
         setHasOptionsMenu(true)
@@ -50,7 +44,30 @@ class NowPlayingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.npMovieList.layoutManager = LinearLayoutManager(context)
+        binding.npMovieList.layoutManager = GridLayoutManager(activity,2)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.displayMode -> {
+                adapter.switchItemView()
+                return if (item.title == "List") {
+                    item.title = "Grid"
+                    binding.npMovieList.layoutManager = LinearLayoutManager(activity)
+                    //binding.npMovieList.layoutManager = GridLayoutManager(activity,2)
+                    true
+                } else {
+                    item.title = "List"
+                    binding.npMovieList.layoutManager = GridLayoutManager(activity,2)
+                    //binding.npMovieList.layoutManager = LinearLayoutManager(activity)
+                    true
+                }
+                adapter.notifyDataSetChanged()
+            }
+            else -> return false
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 
 }
