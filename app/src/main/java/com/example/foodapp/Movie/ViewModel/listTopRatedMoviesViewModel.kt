@@ -1,18 +1,18 @@
-package com.example.foodapp.movie.ViewModel
+package com.example.foodapp.Movie.ViewModel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.foodapp.movie.MovieRes
-import com.example.foodapp.movie.rest.RestClient
+import com.example.foodapp.Movie.MovieResp
+import com.example.foodapp.Movie.rest.RestClient
 import kotlinx.coroutines.launch
 
-class NowPlayingMoviesViewModel : ViewModel() {
+class ListTopRatedMoviesViewModel : ViewModel() {
 
-    fun getData(): MovieRes {
-        var movieResp = MovieRes()
+    fun getData(): MovieResp {
+        var movieResp = MovieResp()
         viewModelScope.launch {
-            movieResp = RestClient.getInstance().API.listNowPlayingMovie(
+            movieResp = RestClient.getInstance().API.listTopRatedMovie(
                 "en-US",
                 1,
                 "ec3dc35863da495920afb66612ea0e50")

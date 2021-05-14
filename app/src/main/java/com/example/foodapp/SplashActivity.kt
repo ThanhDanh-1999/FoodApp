@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.foodapp.movie.ViewModel.NowPlayingMoviesViewModel
+import com.example.foodapp.Movie.ViewModel.NowPlayingMoviesViewModel
 
 class SplashActivity : AppCompatActivity() {
     lateinit var mainViewModel: NowPlayingMoviesViewModel
@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
             val intent=Intent(this,MainActivity::class.java)
             startActivity(intent);
             finish()
-        },20000)
+        },2000)
     }
 
     override fun onStart() {
