@@ -10,9 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.foodapp.Movie.Fragments.NowPlayingFragmentAdapter
 import com.example.foodapp.Movie.Fragments.TopRatedFragmentAdapter
-import com.example.foodapp.Movie.NowPlayingMoviesViewModel
 import com.example.foodapp.Movie.TopRatedMoviesViewModel
 import com.example.foodapp.R
 import com.example.foodapp.databinding.MovieFragmentBinding
@@ -26,7 +24,7 @@ class TopRatedFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewModel = ViewModelProvider(this).get(TopRatedMoviesViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.movie_fragment, container, false)
 
@@ -47,7 +45,7 @@ class TopRatedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.npMovieList.layoutManager = GridLayoutManager(activity,2)
+        binding.npMovieList.layoutManager = LinearLayoutManager(activity)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

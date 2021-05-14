@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.foodapp.Movie.Fragments.NowPlayingFragment
 import com.example.foodapp.R
+import com.example.foodapp.movie.Fragments.TopRatedFragment
 import kotlinx.android.synthetic.main.activity_movie.*
 import kotlinx.android.synthetic.main.activity_restaurants.*
 
@@ -24,7 +25,7 @@ class MovieActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.Toprated_btn->{
-                    loadFragment(NowPlayingFragment())
+                    loadFragment(TopRatedFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> {
