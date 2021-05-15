@@ -138,48 +138,6 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="44dp"
-            android:layout_marginVertical="15dp"
-            android:weightSum="2">
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_marginRight="20dp"
-                android:drawableLeft="@drawable/facebook"
-                android:fontFamily="@font/sofia_pro_regular"
-                android:text="FACEBOOK"
-                android:textColor="#111719"
-                android:textSize="13sp"
-                app:backgroundTint="@color/white"
-                app:cornerRadius="32dp"
-                android:layout_weight="1"
-                tools:ignore="HardcodedText,RtlHardcoded">
-
-            </Button>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:drawableLeft="@drawable/google"
-                android:fontFamily="@font/sofia_pro_regular"
-                android:text="Google  "
-                android:textColor="#111719"
-                android:textSize="13sp"
-                app:backgroundTint="@color/white"
-                app:cornerRadius="32dp"
-                android:layout_weight="1"
-                tools:ignore="HardcodedText,RtlHardcoded">
-
-            </Button>
-        </LinearLayout>
-
-
         <Button
             android:id="@+id/login"
             android:layout_width="match_parent"
@@ -196,6 +154,41 @@
             tools:ignore="HardcodedText">
 
         </Button>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="57dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/stroke_button_shape"
+                android:backgroundTint="#FFFFFF"
+                android:drawableLeft="@drawable/facebook_icon"
+                android:fontFamily="@font/sofia_pro_medium"
+                android:text="FACEBOOK"
+                android:textColor="#000000"
+                app:backgroundTint="#FFFFFF" />
+
+            <Button
+                android:layout_width="168dp"
+                android:layout_height="57dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/stroke_button_shape"
+                android:backgroundTint="#FFFFFF"
+                android:drawableLeft="@drawable/google_icon"
+                android:fontFamily="@font/sofia_pro_medium"
+                android:text="GOOGLE"
+                android:textColor="#000000"
+                app:backgroundTint="#FFFFFF" />
+        </LinearLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/layout2"
