@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
             val intent=Intent(this,MainActivity::class.java)
             startActivity(intent);
             finish()
-        },20000)
+        },5000)
     }
 
     override fun onStart() {
