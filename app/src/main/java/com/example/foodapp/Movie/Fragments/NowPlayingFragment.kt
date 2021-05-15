@@ -32,10 +32,11 @@ class NowPlayingFragment : Fragment() {
             adapter.setDataList(it)
         })
 
-        adapter = NowPlayingFragmentAdapter()
+        adapter = NowPlayingFragmentAdapter(activity)
 
         binding.apply {
             npMovieList.adapter = adapter
+
         }
 
         setHasOptionsMenu(true)

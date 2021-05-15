@@ -1,5 +1,7 @@
 package com.example.foodapp.Movie.Fragments
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,16 +10,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.Movie.Movie
+import com.example.foodapp.Movie.MovieDetailActivity
 import com.example.foodapp.R
 import com.squareup.picasso.Picasso
 
-class TopRatedFragmentAdapter() : RecyclerView.Adapter<TopRatedFragmentAdapter.ViewHolder>(){
+class TopRatedFragmentAdapter(c: Context? = null) : RecyclerView.Adapter<TopRatedFragmentAdapter.ViewHolder>(){
 
     private val LIST_ITEM : Int = 0
     private val GRID_ITEM : Int = 1
     private var isSwitch : Boolean = false
     val data = mutableListOf<Movie>()
-
+    val con = c
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -48,7 +51,11 @@ class TopRatedFragmentAdapter() : RecyclerView.Adapter<TopRatedFragmentAdapter.V
         holder.title.text = item.title
         holder.description.text = item.overview
         Picasso.get().load("https://image.tmdb.org/t/p/w500" + item.posterPath).into(holder.poster)
-
+        holder.poster.setOnClickListener{
+            val intent = Intent(con, MovieDetailActivity::class.java)
+            intent.putExtra("movie_detail",item)
+            con?.startActivity(intent)
+        }
         Log.d("AAA",item.toString())
     }
 

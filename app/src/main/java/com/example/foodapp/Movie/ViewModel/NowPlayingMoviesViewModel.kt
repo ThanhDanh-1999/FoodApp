@@ -13,10 +13,11 @@ class NowPlayingMoviesViewModel : ViewModel() {
 
     fun getData() {
         viewModelScope.launch {
-            val  movieResp = RestClient.getInstance().API.listNowPlayingMovie(
-               "en-US",
-               1,
-               "7329758a578ec893b84930c8f1cc3919")
+            val movieResp = RestClient.getInstance().API.listNowPlayingMovie(
+                "en-US",
+                1,
+                "7329758a578ec893b84930c8f1cc3919"
+            )
             Log.e("TAG", movieResp.results.toString())
             movieList.value = movieResp.results!!
         }

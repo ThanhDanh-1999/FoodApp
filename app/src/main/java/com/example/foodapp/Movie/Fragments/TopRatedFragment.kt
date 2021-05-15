@@ -10,8 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.foodapp.Movie.Fragments.NowPlayingFragmentAdapter
 import com.example.foodapp.Movie.Fragments.TopRatedFragmentAdapter
-import com.example.foodapp.Movie.TopRatedMoviesViewModel
+import com.example.foodapp.Movie.ViewModel.TopRatedMoviesViewModel
 import com.example.foodapp.R
 import com.example.foodapp.databinding.MovieFragmentBinding
 
@@ -33,10 +34,11 @@ class TopRatedFragment : Fragment() {
             adapter.setDataList(it)
         })
 
-        adapter = TopRatedFragmentAdapter()
+        adapter = TopRatedFragmentAdapter(activity)
 
         binding.apply {
             npMovieList.adapter = adapter
+
         }
 
         setHasOptionsMenu(true)

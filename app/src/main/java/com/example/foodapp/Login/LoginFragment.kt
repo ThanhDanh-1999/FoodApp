@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.foodapp.Movie.MovieActivity
-import com.example.foodapp.Restaurant.RestaurantsActivity
 import com.example.foodapp.UserAccount
 import com.example.foodapp.databinding.LogInFragmentBinding
 import kotlinx.android.synthetic.main.log_in_fragment.*
