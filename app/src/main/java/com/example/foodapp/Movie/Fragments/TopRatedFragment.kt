@@ -1,4 +1,4 @@
-package com.example.foodapp.Movie.Fragments
+package com.example.foodapp.movie.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,21 +10,23 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.foodapp.Movie.NowPlayingMoviesViewModel
+import com.example.foodapp.Movie.Fragments.NowPlayingFragmentAdapter
+import com.example.foodapp.Movie.Fragments.TopRatedFragmentAdapter
+import com.example.foodapp.Movie.ViewModel.TopRatedMoviesViewModel
 import com.example.foodapp.R
 import com.example.foodapp.databinding.MovieFragmentBinding
 
-class NowPlayingFragment : Fragment() {
-    private lateinit var binding: MovieFragmentBinding
-    private lateinit var adapter: NowPlayingFragmentAdapter
-    private lateinit var viewModel: NowPlayingMoviesViewModel
+class TopRatedFragment : Fragment() {
+    private lateinit var binding : MovieFragmentBinding
+    private lateinit var adapter: TopRatedFragmentAdapter
+    private lateinit var viewModel : TopRatedMoviesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this).get(NowPlayingMoviesViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(TopRatedMoviesViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.movie_fragment, container, false)
 
         viewModel.getData()
@@ -32,7 +34,7 @@ class NowPlayingFragment : Fragment() {
             adapter.setDataList(it)
         })
 
-        adapter = NowPlayingFragmentAdapter(activity)
+        adapter = TopRatedFragmentAdapter(activity)
 
         binding.apply {
             npMovieList.adapter = adapter
@@ -68,5 +70,4 @@ class NowPlayingFragment : Fragment() {
         return super.onOptionsItemSelected(item)
 
     }
-
 }

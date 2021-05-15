@@ -12,7 +12,8 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApp">
-        <activity android:name=".Movie.MovieActivity"></activity>
+        <activity android:name=".Movie.MovieActivity"/>
+        <activity android:name=".Movie.MovieDetailActivity"/>
         <activity android:name=".Restaurant.RestaurantsActivity" />
         <activity android:name=".VerificationCodeActivity" />
         <activity android:name=".Profile.ProfileActivity" />
