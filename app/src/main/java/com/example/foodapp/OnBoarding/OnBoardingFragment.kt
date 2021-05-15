@@ -22,7 +22,7 @@ class OnBoardingFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.on_boarding_fragment,container,false)
         val carouselView = view.findViewById<CarouselView>(R.id.carouselView)
-        carouselView.setPageCount(sampleImages.size)
+        carouselView.pageCount = sampleImages.size
         carouselView.setImageListener(imageListener)
         return view
     }

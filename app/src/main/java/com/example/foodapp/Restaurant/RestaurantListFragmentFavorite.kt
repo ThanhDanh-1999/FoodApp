@@ -5,21 +5,19 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodapp.R
 import com.example.foodapp.databinding.RestaurantlistFragmentLayoutFavoriteBinding
-
 import kotlinx.android.synthetic.main.restaurantlist_fragment_layout_favorite.*
 
 class RestaurantListFragmentFavorite(val data : List<Restaurant>)  : Fragment(){
     private lateinit var binding : RestaurantlistFragmentLayoutFavoriteBinding
     private lateinit var adapter : FavoriteListAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.restaurantlist_fragment_layout_favorite,container,false)
         adapter = FavoriteListAdapter(data)
         binding.FavRetaurantList.adapter = adapter
@@ -36,20 +34,19 @@ class RestaurantListFragmentFavorite(val data : List<Restaurant>)  : Fragment(){
         when (item.itemId) {
             R.id.displayMode -> {
                 adapter.switchItemView()
-                if (item.title == "List") {
+                return if (item.title == "List") {
                     item.icon = resources.getDrawable(R.drawable.ic_grid)
                     item.title = "Grid"
 
                     FavRetaurantList.layoutManager = GridLayoutManager(activity,2)
 
-                    return true
+                    true
                 } else {
                     item.icon = resources.getDrawable(R.drawable.ic_list)
                     item.title = "List"
                     FavRetaurantList.layoutManager = LinearLayoutManager(activity)
-                    return true
+                    true
                 }
-                adapter.notifyDataSetChanged()
             }
             else -> return false
         }

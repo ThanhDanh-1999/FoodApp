@@ -18,11 +18,10 @@ class FavoriteListAdapter(val data : List<Restaurant>) : RecyclerView.Adapter<Fa
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var layoutInflater = LayoutInflater.from(parent.context)
-        var view : View
-        if(viewType == LIST_ITEM)
-            view = layoutInflater.inflate(R.layout.restaurant_linear_item, parent, false)
+        val view : View = if(viewType == LIST_ITEM)
+            layoutInflater.inflate(R.layout.restaurant_linear_item, parent, false)
         else
-            view = layoutInflater.inflate(R.layout.restaurant_grid_item, parent, false)
+            layoutInflater.inflate(R.layout.restaurant_grid_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -38,10 +37,10 @@ class FavoriteListAdapter(val data : List<Restaurant>) : RecyclerView.Adapter<Fa
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (isSwitch){
-            return LIST_ITEM;
+        return if (isSwitch){
+            LIST_ITEM;
         }else{
-            return GRID_ITEM;
+            GRID_ITEM;
         }
     }
 
@@ -49,7 +48,7 @@ class FavoriteListAdapter(val data : List<Restaurant>) : RecyclerView.Adapter<Fa
         val name = itemView.findViewById<TextView>(R.id.restaurantName)!!
         val address = itemView.findViewById<TextView>(R.id.restaurantAddress)!!
         val picture = itemView.findViewById<ImageView>(R.id.restaurantPic)!!
-        val isFav = itemView.findViewById<CheckBox>(R.id.favorite_btn)
+        val isFav = itemView.findViewById<CheckBox>(R.id.favorite_btn)!!
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -44,7 +44,7 @@ class NowPlayingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.npMovieList.layoutManager = GridLayoutManager(activity,2)
+        binding.npMovieList.layoutManager = LinearLayoutManager(activity)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
